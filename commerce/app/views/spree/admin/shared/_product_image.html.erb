@@ -1,0 +1,12 @@
+<% width ||= 50 %>
+<% height ||= 50 %>
+<% image ||= object.primary_media %>
+
+<% if image.present? && image.attached? %>
+  <% alt ||= image.alt || object.name %>
+  <div class="overflow-hidden rounded-md border border-gray-300" style="width: <%= width %>px; height: <%= height %>px;">
+    <%= image_tag image.attachment.url, width: width, height: height, alt: alt, loading: :lazy, class: 'object-contain transition-transform duration-300 ease-out hover:scale-105' %>
+  </div>
+<% else %>
+  <%= render 'spree/admin/shared/no_image', width: width, height: height %>
+<% end %>

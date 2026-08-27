@@ -1,0 +1,49 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+# Supabase Storage exposes an S3-compatible endpoint. These credentials belong
+# exclusively to this Rails backend and must never be added to NEXT_PUBLIC_*.
+supabase:
+  service: S3
+  access_key_id: <%= ENV.fetch("SUPABASE_STORAGE_ACCESS_KEY_ID") %>
+  secret_access_key: <%= ENV.fetch("SUPABASE_STORAGE_SECRET_ACCESS_KEY") %>
+  region: <%= ENV.fetch("SUPABASE_STORAGE_REGION", "us-east-1") %>
+  bucket: <%= ENV.fetch("SUPABASE_STORAGE_BUCKET", "catalog-public") %>
+  endpoint: <%= ENV.fetch("SUPABASE_STORAGE_ENDPOINT") %>
+  force_path_style: true
+
+# Originals are private when SUPABASE_PRIVATE_BUCKET is configured. The
+# storefront never reads this service directly; only the Rails worker does.
+supabase_private:
+  service: S3
+  access_key_id: <%= ENV.fetch("SUPABASE_STORAGE_ACCESS_KEY_ID") %>
+  secret_access_key: <%= ENV.fetch("SUPABASE_STORAGE_SECRET_ACCESS_KEY") %>
+  region: <%= ENV.fetch("SUPABASE_STORAGE_REGION", "us-east-1") %>
+  bucket: <%= ENV.fetch("SUPABASE_PRIVATE_BUCKET", "catalog-private") %>
+  endpoint: <%= ENV.fetch("SUPABASE_STORAGE_ENDPOINT") %>
+  force_path_style: true
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+# Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
+# amazon:
+#   service: S3
+#   access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+#   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+#   region: us-east-1
+#   bucket: your_own_bucket-<%= Rails.env %>
+
+# Remember not to checkin your GCS keyfile to a repository
+# google:
+#   service: GCS
+#   project: your_project
+#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
+#   bucket: your_own_bucket-<%= Rails.env %>
+
+# mirror:
+#   service: Mirror
+#   primary: local
+#   mirrors: [ amazon, google, microsoft ]

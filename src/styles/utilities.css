@@ -1,0 +1,14 @@
+.font-display { font-family: var(--font-display), sans-serif; }
+
+.grid-surface {
+  background-image: linear-gradient(var(--color-border-subtle) 1px, transparent 1px), linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.page-container {
+  margin-inline: auto;
+  max-width: var(--container-max);
+  padding-inline: var(--gutter-mobile);
+}
+
+@media (min-width: 768px) { .page-container { padding-inline: var(--gutter-desktop); } }

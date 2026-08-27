@@ -1,0 +1,19 @@
+.section { padding: 2rem var(--gutter-mobile); background: var(--color-background-secondary); }
+.heading { display: flex; align-items: center; justify-content: space-between; max-width: var(--container-max); margin: 0 auto 1rem; }
+.title { font-family: var(--font-display), sans-serif; font-size: clamp(1.35rem, 3vw, 1.75rem); font-weight: 800; letter-spacing: -.065em; }
+.link { font-size: .7rem; text-decoration: underline; text-underline-offset: .25rem; }
+.grid { display: grid; max-width: var(--container-max); grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin: 0 auto; }
+.card { min-width: 0; padding: .45rem; border-radius: var(--radius-card); background: var(--color-surface); }
+.image { position: relative; display: block; aspect-ratio: 1 / 1.08; overflow: hidden; border-radius: calc(var(--radius-card) - .18rem); background: #fff; }
+.photo { object-fit: contain; }
+.garment { position: absolute; inset: 16% 23% 11%; display: block; background: linear-gradient(100deg, #121212, #3a3a38 55%, #111); box-shadow: 0 1.1rem 1.3rem color-mix(in srgb, var(--color-foreground) 20%, transparent); }
+.graphite .garment { border-radius: 43% 43% 13% 13% / 25% 25% 8% 8%; }
+.void .garment { inset: 19% 18% 13%; border-radius: 45% 45% 10% 10% / 14% 14% 8% 8%; }
+.concrete .garment { inset: 14% 30% 9%; background: linear-gradient(100deg, #d4d4d1, #fff 55%, #c7c7c4); }
+.mark { position: absolute; top: 50%; left: 50%; font-size: .36rem; letter-spacing: .08em; color: var(--color-background-secondary); transform: translate(-50%, -50%); }
+.details { display: flex; flex-direction: column; gap: .2rem; padding: .55rem .15rem; }
+.details h3 { font-size: .62rem; font-weight: 700; line-height: 1.15; }
+.details p { font-size: .6rem; font-weight: 600; }
+.addButton { width: 100%; padding: .6rem; border-radius: var(--radius-control); background: var(--color-primary); color: var(--color-background-secondary); font-size: .6rem; transition: opacity var(--transition-base), transform var(--transition-base); }
+.addButton:hover { opacity: .78; transform: translateY(-1px); }
+@media (min-width: 640px) { .section { padding: 2.5rem var(--gutter-desktop); } .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .85rem; } .details h3 { font-size: .7rem; } }

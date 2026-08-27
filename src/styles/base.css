@@ -1,0 +1,18 @@
+* { border-color: var(--color-border); }
+
+html { background: var(--color-background); }
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body), sans-serif;
+}
+
+::selection { background: var(--color-primary); color: var(--color-background); }
+
+a, button { -webkit-tap-highlight-color: transparent; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}

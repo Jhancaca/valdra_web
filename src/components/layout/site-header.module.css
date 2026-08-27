@@ -1,0 +1,12 @@
+.header { position: relative; z-index: 10; background: var(--color-background-secondary); }
+.inner { display: flex; height: 5.25rem; max-width: var(--container-max); align-items: center; justify-content: space-between; margin: 0 auto; padding: 0 var(--gutter-mobile); }
+.brand { font-family: var(--font-display), sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: -.06em; }
+.navigation { display: none; align-items: center; gap: 1.75rem; font-size: .76rem; }
+.navigation a, .actions a { transition: opacity var(--transition-base); }
+.navigation a:hover, .actions a:hover, .active { opacity: .55; }
+.actions { display: flex; align-items: center; gap: 1rem; font-size: .76rem; white-space: nowrap; }
+.actions a:first-child, .actions a:nth-child(2) { font-size: 1.3rem; line-height: 1; }
+.bag { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 1.6rem; min-height: 2rem; }
+.bagIcon { width: 1.35rem; height: 1.35rem; }
+.count { position: absolute; top: -.25rem; right: -.5rem; display: grid; min-width: 1rem; height: 1rem; padding: 0 .2rem; place-items: center; border-radius: 999px; background: var(--color-primary); color: var(--color-background-secondary); font-size: .58rem; font-weight: 700; }
+@media (min-width: 720px) { .inner { padding-inline: var(--gutter-desktop); } .navigation { display: flex; } }
