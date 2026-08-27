@@ -221,25 +221,28 @@ No hagas `git push --force` sobre `main` o `develop`.
 
 ## Docker: recomendación
 
-Docker es recomendable para homogeneizar Node, Ruby, PostgreSQL local y el
-worker de imágenes. Sin embargo, VALDRA tiene dos aplicaciones independientes:
+El backend ya incluye `commerce/Dockerfile`, preparado para una imagen de
+producción con Ruby 3.3, libvips, Python y las dependencias del normalizador de
+imágenes WebP. Ese archivo no debe usarse como entorno de desarrollo con datos
+reales.
+
+VALDRA tiene dos aplicaciones independientes:
 
 1. Next.js.
 2. Rails/Spree, más el procesamiento de imágenes.
 
-Por eso, lo correcto será añadir posteriormente:
+Para completar un entorno reproducible de desarrollo todavía será conveniente
+añadir:
 
 - Un Dockerfile para el storefront.
-- Un Dockerfile para Rails.
-- Un `docker-compose.yml` para coordinar servicios.
-- Variables de entorno mediante un archivo local no versionado.
+- Un `docker-compose.yml` para coordinar storefront, Rails y workers.
+- Variables de entorno mediante archivos locales no versionados.
 
 Supabase continuará siendo un servicio externo. Docker no debe contener claves
 ni sustituye las políticas RLS de Supabase.
 
-Mientras esos archivos no estén incorporados, utiliza la ejecución nativa
-descrita arriba. No descargues ni inventes imágenes Docker no aprobadas para el
-proyecto.
+Hasta que exista ese `docker-compose.yml`, utiliza la ejecución nativa descrita
+arriba. No descargues ni inventes imágenes Docker no aprobadas para el proyecto.
 
 ## Reglas de seguridad obligatorias
 
